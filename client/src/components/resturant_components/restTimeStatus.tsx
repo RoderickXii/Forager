@@ -7,7 +7,6 @@ interface RestTimeStatusProps {
 }
 
 const RestTimeStatus: React.FC<RestTimeStatusProps> = ({ hours }) => {
-
   const { isOpen, minutesLeft } = useStoreTime(hours);
 
   return (

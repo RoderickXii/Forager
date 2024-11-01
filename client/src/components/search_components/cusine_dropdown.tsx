@@ -43,7 +43,6 @@ export default function CusineDropdrop() {
   ];
   const { cuisine } = useSelector((state: RootState) => state.search);
 
-  // Handler for selecting a cuisine
   const handleSelect = (cuisine: string) => {
     dispatch(setCuisine(cuisine));
   };
@@ -52,9 +51,9 @@ export default function CusineDropdrop() {
     <Dropdown
       showArrow
       classNames={{
-        base: "before:bg-default-200", // change arrow background
+        base: "before:bg-default-200",
         content:
-          "py-1 px-1 border border-default-200 bg-gradient-to-br from-white to-default-200 dark:from-default-50 dark:to-black max-h-60 overflow-y-auto", // Add max height and enable scrolling
+          "py-1 px-1 border border-default-200 bg-gradient-to-br from-white to-default-200 dark:from-default-50 dark:to-black max-h-60 overflow-y-auto",
       }}
     >
       <DropdownTrigger>

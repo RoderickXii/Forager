@@ -1,6 +1,7 @@
 import { NextUIProvider } from "@nextui-org/system";
 import { useNavigate } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
+
 import { store } from "./store/store";
 
 export function Provider({ children }: { children: React.ReactNode }) {

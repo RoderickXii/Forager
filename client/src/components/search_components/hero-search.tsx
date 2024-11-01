@@ -5,10 +5,6 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { throttle } from "lodash";
 import axios from "axios";
 
-import Crossaint from "../../assets/monika-grabkowska-eAsck4oAguM-unsplash.png";
-import Pancakes from "../../assets/monika-grabkowska-P1aohbiT-EY-unsplash.png";
-import Coffee from "../../assets/monika-grabkowska-oMIWD_Ob0oA-unsplash.png";
-
 import CusineDropdown from "./cusine_dropdown";
 
 import { AppDispatch, RootState } from "@/store/store";
@@ -47,7 +43,6 @@ const HeroSearch = () => {
 
   const handleSearch = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("form clicked");
 
     try {
       if (!cuisine || !distance || !budget) {
@@ -56,9 +51,7 @@ const HeroSearch = () => {
 
       setIsLoading(true);
 
-      // Fetch geolocation
       await fetchGeolocation();
-      // console.log("fetching geolocation");
       await setReadyToSearch(true);
     } catch (error) {
       console.error("Error during handleSearch:", error);
@@ -67,21 +60,12 @@ const HeroSearch = () => {
 
   useEffect(() => {
     if (readyToSearch) {
-      // console.log("Ready to search with cuisine", budget, longitude);
-
-      // Perform POST fetch request
       const postData = async () => {
         try {
           console.log("Posting data");
           const response = await axios.get(
             `https://api.spoonacular.com/food/restaurants/search?cuisine=${cuisine}&budget=${budget}&distance=${distance}&lat=${latitude}&lng=${longitude}&apiKey=${APIKEY}`,
           );
-
-          // if (!response.ok) {
-          //   throw new Error("Network response was not ok");
-          // }
-
-          console.log("Search results from heroSearch: ", response);
 
           dispatch(setSearchResults(response.data.restaurants));
         } catch (error) {
@@ -93,8 +77,6 @@ const HeroSearch = () => {
       };
 
       postData();
-    } else {
-      console.log("Not ready to search", latitude, longitude);
     }
   }, [readyToSearch]);
 
@@ -136,24 +118,24 @@ const HeroSearch = () => {
       <div className="hidden md:flex flex-row  mt-4 md:mt-0">
         <img
           alt="Coffee"
-          className="h-24 md:h-72"
+          className="h-24 md:h-72 md:w-[345]"
           height="96"
           loading="eager"
-          src={Coffee}
+          src={`./assets/monika-grabkowska-oMIWD_Ob0oA-unsplash.webp`}
         />
         <img
           alt="Crossaint"
-          className="h-24 md:h-72"
+          className="h-24 md:h-72 md:w-[345]"
           height="96"
           loading="eager"
-          src={Crossaint}
+          src={`./assets/monika-grabkowska-eAsck4oAguM-unsplash.webp`}
         />
         <img
           alt="Pancakes"
-          className="h-24 hidden md:block md:h-72"
+          className="h-24 hidden md:block md:h-72 md:w-[345]"
           height="96"
           loading="eager"
-          src={Pancakes}
+          src={`./assets/monika-grabkowska-P1aohbiT-EY-unsplash.webp`}
         />
       </div>
     </div>

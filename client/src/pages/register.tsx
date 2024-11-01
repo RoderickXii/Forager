@@ -1,9 +1,10 @@
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { throttle } from "lodash";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
+import { Link } from "@nextui-org/link";
 
 import {
   setFirstName,
@@ -11,12 +12,10 @@ import {
   setUsername,
   setEmail,
   setPassword,
-  resetRegister,
 } from "../store/registerSlice";
 import { RootState, AppDispatch } from "../store/store";
 
 import DefaultLayout from "@/layouts/default";
-import { Link } from '@nextui-org/link';
 
 const RegisterPage: React.FC = () => {
   const navigate = useNavigate();

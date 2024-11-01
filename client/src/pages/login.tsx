@@ -14,9 +14,7 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [wasSubmitted, setWasSubmitted] = useState(false);
-  const { username, email, password } = useSelector(
-    (state: RootState) => state.login,
-  );
+  const { username, password } = useSelector((state: RootState) => state.login);
 
   const handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name: inputName, value } = e.target;

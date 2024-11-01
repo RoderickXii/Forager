@@ -1,6 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { set } from 'lodash';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface RegisterState {
   firstName: string;
